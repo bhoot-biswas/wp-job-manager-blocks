@@ -76,7 +76,7 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 				'className'               => array(
 					'type' => 'string',
 				),
-				'categories'              => array(
+				'types'                   => array(
 					'type' => 'string',
 				),
 				'jobsToShow'              => array(
@@ -96,6 +96,10 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 					'default' => 55,
 				),
 				'displayPostDate'         => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'displayCompanyLogo'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
