@@ -60,3 +60,64 @@ function wp_job_manager_blocks_editor_assets() {
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'wp_job_manager_blocks_editor_assets' );
+
+/**
+ * Registers the `bengal-studio/featured-jobs` block on server.
+ */
+function wp_job_manager_blocks_register_block_featured_jobs() {
+	register_block_type(
+		'bengal-studio/featured-jobs',
+		array(
+			'attributes'      => array(
+				'align'                   => array(
+					'type' => 'string',
+					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
+				),
+				'className'               => array(
+					'type' => 'string',
+				),
+				'categories'              => array(
+					'type' => 'string',
+				),
+				'jobsToShow'              => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'displayPostContent'      => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'displayPostContentRadio' => array(
+					'type'    => 'string',
+					'default' => 'excerpt',
+				),
+				'excerptLength'           => array(
+					'type'    => 'number',
+					'default' => 55,
+				),
+				'displayPostDate'         => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'postLayout'              => array(
+					'type'    => 'string',
+					'default' => 'list',
+				),
+				'columns'                 => array(
+					'type'    => 'number',
+					'default' => 3,
+				),
+				'order'                   => array(
+					'type'    => 'string',
+					'default' => 'desc',
+				),
+				'orderBy'                 => array(
+					'type'    => 'string',
+					'default' => 'date',
+				),
+			),
+			'render_callback' => 'render_block_core_latest_jobs',
+		)
+	);
+}
+add_action( 'init', 'wp_job_manager_blocks_register_block_featured_jobs' );

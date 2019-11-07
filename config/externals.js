@@ -1,7 +1,9 @@
 /**
  * Utility methods for use when generating build configuration objects.
  */
-const { join } = require( 'path' );
+const {
+	join
+} = require('path');
 
 /**
  * Given a string, returns a new string with dash separators converted to
@@ -12,7 +14,7 @@ const { join } = require( 'path' );
  *
  * @return {string} Camel-cased string.
  */
-const camelCaseDash = string => string.replace( /-([a-z])/g, ( match, letter ) => letter.toUpperCase() );
+const camelCaseDash = string => string.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
 
 /**
  * Define externals to load components through the wp global.
@@ -30,12 +32,13 @@ const externals = [
 	'date',
 	'data',
 	'i18n',
+	'api-fetch',
+	'url',
 ].reduce(
-	( externals, name ) => ( {
+	(externals, name) => ({
 		...externals,
-		[ `@wordpress/${ name }` ]: `wp.${ camelCaseDash( name ) }`,
-	} ),
-	{
+		[`@wordpress/${ name }`]: `wp.${ camelCaseDash( name ) }`,
+	}), {
 		wp: 'wp',
 		ga: 'ga', // Old Google Analytics.
 		gtag: 'gtag', // New Google Analytics.
