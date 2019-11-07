@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: wp-job-manager-blocks — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: wp-job-manager-blocks — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
+ * Plugin Name: WP Job Manager - Blocks
+ * Plugin URI: https://bengal-studio.com/plugins/wp-job-manager-blocks/
+ * Description: Gutenberg Blocks for WP Job Manager.
+ * Author: Bengal Studio
+ * Author URI: https://bengal-studio.com
  * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
