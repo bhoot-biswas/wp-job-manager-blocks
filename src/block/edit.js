@@ -86,7 +86,7 @@ class FeaturedJobsEdit extends Component {
     render() {
 		const { attributes, setAttributes, featuredJobs } = this.props;
 		const { typesList } = this.state;
-		const { displayPostContentRadio, displayPostContent, displayCompanyLogo, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
+		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyLogo, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -130,24 +130,46 @@ class FeaturedJobsEdit extends Component {
 			);
 		}
 
-        // Creates a <p class='wp-block-cgb-block-wp-job-manager-blocks'></p>.
+		// Removing jobs from display should be instant.
+		const displayJobs = featuredJobs.length > jobsToShow ?
+			featuredJobs.slice( 0, jobsToShow ) :
+			featuredJobs;
+
+		console.log(displayJobs);
+
+		const dateFormat = __experimentalGetSettings().formats.date;
+
         return (
 			<Fragment>
 				{ inspectorControls }
-				<div className={ this.props.className }>
-					<p>— Hello from the backend.</p>
-					<p>
-						CGB BLOCK: <code>wp-job-manager-blocks</code> is a new Gutenberg block
-					</p>
-					<p>
-						It was created via{ ' ' }
-						<code>
-							<a href="https://github.com/ahmadawais/create-guten-block">
-								create-guten-block
-							</a>
-						</code>.
-					</p>
-				</div>
+				<ul
+					className={ classnames( this.props.className, {
+						'bengal-studio-block-featured-jobs__list': true,
+						'has-dates': displayJobDate,
+					} ) }
+				>
+					{ displayJobs.map( ( job, i ) => {
+						const titleTrimmed = job.title.rendered.trim();
+						return (
+							<li key={ i }>
+								<a href={ job.link } target="_blank" rel="noreferrer noopener">
+									{ titleTrimmed ? (
+										<RawHTML>
+											{ titleTrimmed }
+										</RawHTML>
+									) :
+										__( '(no title)' )
+									}
+								</a>
+								{ displayJobDate && job.date_gmt &&
+									<time dateTime={ format( 'c', job.date_gmt ) } className="wp-block-latest-posts__post-date">
+										{ dateI18n( dateFormat, job.date_gmt ) }
+									</time>
+								}
+							</li>
+						);
+					} ) }
+				</ul>
 			</Fragment>
 
         );

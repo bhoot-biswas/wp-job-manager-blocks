@@ -95,7 +95,7 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 					'type'    => 'number',
 					'default' => 55,
 				),
-				'displayPostDate'         => array(
+				'displayJobDate'          => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
