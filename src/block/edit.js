@@ -56,7 +56,7 @@ class FeaturedJobsEdit extends Component {
     render() {
         // Creates a <p class='wp-block-cgb-block-wp-job-manager-blocks'></p>.
         return (
-            <div className={ props.className }>
+            <div className={ this.props.className }>
                 <p>— Hello from the backend.</p>
                 <p>
                     CGB BLOCK: <code>wp-job-manager-blocks</code> is a new Gutenberg block
