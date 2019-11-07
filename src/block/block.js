@@ -5,6 +5,11 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 
+/**
+ * Internal dependencies
+ */
+import edit from './edit';
+
 //  Import CSS.
 import './editor.scss';
 import './style.scss';
@@ -36,36 +41,18 @@ registerBlockType( 'cgb/block-wp-job-manager-blocks', {
 		__( 'create-guten-block' ),
 	],
 
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 *
-	 * @param {Object} props Props.
-	 * @returns {Mixed} JSX Component.
-	 */
-	edit: ( props ) => {
-		// Creates a <p class='wp-block-cgb-block-wp-job-manager-blocks'></p>.
-		return (
-			<div className={ props.className }>
-				<p>— Hello from the backend.</p>
-				<p>
-					CGB BLOCK: <code>wp-job-manager-blocks</code> is a new Gutenberg block
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
-		);
-	},
+    /**
+     * The edit function describes the structure of your block in the context of the editor.
+     * This represents what the editor will render when the block is used.
+     *
+     * The "edit" property must be a valid function.
+     *
+     * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+     *
+     * @param {Object} props Props.
+     * @returns {Mixed} JSX Component.
+     */
+	edit,
 
 	/**
 	 * The save function defines the way in which the different attributes should be combined
