@@ -3,7 +3,7 @@
  */
 import {
 	isUndefined,
-	pickBy
+	pickBy,
 } from 'lodash';
 import classnames from 'classnames';
 
@@ -135,8 +135,6 @@ class FeaturedJobsEdit extends Component {
 			featuredJobs.slice( 0, jobsToShow ) :
 			featuredJobs;
 
-		console.log(displayJobs);
-
 		const dateFormat = __experimentalGetSettings().formats.date;
 
         return (
@@ -150,22 +148,66 @@ class FeaturedJobsEdit extends Component {
 				>
 					{ displayJobs.map( ( job, i ) => {
 						const titleTrimmed = job.title.rendered.trim();
+						const jobLocationTrimmed = job.meta._job_location.trim();
+						const jobCompanyNameTrimmed = job.meta._company_name.trim();
+
+						const jobTypes = job['job-types'];
+						const hasJobTypes = Array.isArray( jobTypes ) && jobTypes.length;
+
 						return (
 							<li key={ i }>
 								<a href={ job.link } target="_blank" rel="noreferrer noopener">
-									{ titleTrimmed ? (
-										<RawHTML>
-											{ titleTrimmed }
-										</RawHTML>
-									) :
-										__( '(no title)' )
-									}
+									<div className="content">
+										<div className="position">
+											<h3>
+												{ titleTrimmed ? (
+													<RawHTML>
+														{ titleTrimmed }
+													</RawHTML>
+												) :
+													__( '(no title)' )
+												}
+											</h3>
+										</div>
+										<ul className="meta">
+											<li className="location">
+												{ jobLocationTrimmed ? (
+													<RawHTML>
+														{ jobLocationTrimmed }
+													</RawHTML>
+												) :
+													__( 'Anywhere' )
+												}
+											</li>
+											{ jobCompanyNameTrimmed &&
+												<li className="company">
+													<RawHTML>
+														{ jobCompanyNameTrimmed }
+													</RawHTML>
+												</li>
+											}
+
+											{ hasJobTypes && jobTypes.map( ( type, i ) => {
+												const jobType = typesList.find( ({ id }) => id === type );
+												return (
+													<li className="job-type" key={ i }>
+														<RawHTML>
+															{ jobType.name }
+														</RawHTML>
+													</li>
+												);
+											} ) }
+
+											{ displayJobDate && job.date_gmt &&
+												<li className="date">
+													<time dateTime={ format( 'c', job.date_gmt ) } className="wp-block-latest-posts__post-date">
+														{ dateI18n( dateFormat, job.date_gmt ) }
+													</time>
+												</li>
+											}
+										</ul>
+									</div>
 								</a>
-								{ displayJobDate && job.date_gmt &&
-									<time dateTime={ format( 'c', job.date_gmt ) } className="wp-block-latest-posts__post-date">
-										{ dateI18n( dateFormat, job.date_gmt ) }
-									</time>
-								}
 							</li>
 						);
 					} ) }
@@ -186,12 +228,14 @@ export default withSelect((select, props) => {
 	const {
 		getEntityRecords
 	} = select('core');
+
 	const featuredJobsQuery = pickBy({
-		types,
+		'job-types': types,
 		order,
 		orderby: orderBy,
 		per_page: jobsToShow,
 	}, (value) => !isUndefined(value));
+
 	return {
 		featuredJobs: getEntityRecords('postType', 'job_listing', featuredJobsQuery),
 	};
