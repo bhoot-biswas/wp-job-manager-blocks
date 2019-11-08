@@ -103,6 +103,14 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'displayLocation'         => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'displayType'             => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'postLayout'              => array(
 					'type'    => 'string',
 					'default' => 'list',

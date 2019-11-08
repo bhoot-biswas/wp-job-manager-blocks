@@ -86,7 +86,7 @@ class FeaturedJobsEdit extends Component {
     render() {
 		const { attributes, setAttributes, featuredJobs } = this.props;
 		const { typesList } = this.state;
-		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyLogo, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
+		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyLogo, displayLocation, displayType, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -95,6 +95,16 @@ class FeaturedJobsEdit extends Component {
 						label={ __( 'Show Company Logo' ) }
 						checked={ displayCompanyLogo }
 						onChange={ ( value ) => setAttributes( { displayCompanyLogo: value } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Show Location' ) }
+						checked={ displayLocation }
+						onChange={ ( value ) => setAttributes( { displayLocation: value } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Show Type' ) }
+						checked={ displayType }
+						onChange={ ( value ) => setAttributes( { displayType: value } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Sorting and Filtering' ) }>
