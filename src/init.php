@@ -99,6 +99,10 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'displayCompanyName'      => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'displayCompanyLogo'      => array(
 					'type'    => 'boolean',
 					'default' => false,

@@ -84,13 +84,18 @@ class FeaturedJobsEdit extends Component {
 	}
 
     render() {
-		const { attributes, setAttributes, featuredJobs } = this.props;
+		const { attributes, setAttributes, featuredJobs, media } = this.props;
 		const { typesList } = this.state;
-		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyLogo, displayLocation, displayType, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
+		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyName, displayCompanyLogo, displayLocation, displayType, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
+					<ToggleControl
+						label={ __( 'Show Company Name' ) }
+						checked={ displayCompanyName }
+						onChange={ ( value ) => setAttributes( { displayCompanyName: value } ) }
+					/>
 					<ToggleControl
 						label={ __( 'Show Company Logo' ) }
 						checked={ displayCompanyLogo }
@@ -163,10 +168,16 @@ class FeaturedJobsEdit extends Component {
 
 						const jobTypes = job['job-types'];
 						const hasJobTypes = Array.isArray( jobTypes ) && jobTypes.length;
+						const featuredMedia = job.featured_media && Array.isArray( media ) && media.length ? media.find( ({ id }) => id === job.featured_media ) : false;
 
 						return (
 							<li key={ i }>
 								<a href={ job.link } target="_blank" rel="noreferrer noopener">
+									{ displayCompanyLogo && featuredMedia &&
+										<div className="image">
+											<img src={ featuredMedia.media_details.sizes.thumbnail.source_url } alt={ __( 'featured' ) } />
+										</div>
+									}
 									<div className="content">
 										<div className="position">
 											<h3>
@@ -180,16 +191,19 @@ class FeaturedJobsEdit extends Component {
 											</h3>
 										</div>
 										<ul className="meta">
-											<li className="location">
-												{ jobLocationTrimmed ? (
-													<RawHTML>
-														{ jobLocationTrimmed }
-													</RawHTML>
-												) :
-													__( 'Anywhere' )
-												}
-											</li>
-											{ jobCompanyNameTrimmed &&
+											{ displayLocation &&
+												<li className="location">
+													{ jobLocationTrimmed ? (
+														<RawHTML>
+															{ jobLocationTrimmed }
+														</RawHTML>
+													) :
+														__( 'Anywhere' )
+													}
+												</li>
+											}
+
+											{ displayCompanyName && jobCompanyNameTrimmed &&
 												<li className="company">
 													<RawHTML>
 														{ jobCompanyNameTrimmed }
@@ -197,7 +211,7 @@ class FeaturedJobsEdit extends Component {
 												</li>
 											}
 
-											{ hasJobTypes && jobTypes.map( ( type, i ) => {
+											{ displayType && hasJobTypes && jobTypes.map( ( type, i ) => {
 												const jobType = typesList.find( ({ id }) => id === type );
 												return (
 													<li className="job-type" key={ i }>
@@ -246,7 +260,22 @@ export default withSelect((select, props) => {
 		per_page: jobsToShow,
 	}, (value) => !isUndefined(value));
 
+	const featuredJobs = getEntityRecords('postType', 'job_listing', featuredJobsQuery);
+
+	let media = [];
+	if(Array.isArray( featuredJobs ) && featuredJobs.length) {
+		const mediaIds = featuredJobs.map( job => {
+			return job.featured_media;
+		});
+		const mediaQuery = {
+			include: mediaIds,
+		};
+
+		media = getEntityRecords('postType', 'attachment', mediaQuery);
+	}
+
 	return {
-		featuredJobs: getEntityRecords('postType', 'job_listing', featuredJobsQuery),
+		media,
+		featuredJobs,
 	};
 })(FeaturedJobsEdit);
