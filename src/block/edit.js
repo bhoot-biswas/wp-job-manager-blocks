@@ -171,11 +171,11 @@ class FeaturedJobsEdit extends Component {
 						const featuredMedia = job.featured_media && Array.isArray( media ) && media.length ? media.find( ({ id }) => id === job.featured_media ) : false;
 
 						return (
-							<li key={ i }>
+							<li className="job_listing" key={ i }>
 								<a href={ job.link } target="_blank" rel="noreferrer noopener">
 									{ displayCompanyLogo && featuredMedia &&
 										<div className="image">
-											<img src={ featuredMedia.media_details.sizes.thumbnail.source_url } alt={ __( 'featured' ) } />
+											<img className="company_logo" src={ featuredMedia.media_details.sizes.thumbnail.source_url } alt={ __( 'featured' ) } />
 										</div>
 									}
 									<div className="content">
@@ -193,21 +193,13 @@ class FeaturedJobsEdit extends Component {
 										<ul className="meta">
 											{ displayLocation &&
 												<li className="location">
-													{ jobLocationTrimmed ? (
-														<RawHTML>
-															{ jobLocationTrimmed }
-														</RawHTML>
-													) :
-														__( 'Anywhere' )
-													}
+													{ jobLocationTrimmed ? jobLocationTrimmed : __( 'Anywhere' ) }
 												</li>
 											}
 
 											{ displayCompanyName && jobCompanyNameTrimmed &&
 												<li className="company">
-													<RawHTML>
-														{ jobCompanyNameTrimmed }
-													</RawHTML>
+													{ jobCompanyNameTrimmed }
 												</li>
 											}
 
@@ -215,9 +207,7 @@ class FeaturedJobsEdit extends Component {
 												const jobType = typesList.find( ({ id }) => id === type );
 												return (
 													<li className="job-type" key={ i }>
-														<RawHTML>
-															{ jobType.name }
-														</RawHTML>
+														{ jobType.name }
 													</li>
 												);
 											} ) }
