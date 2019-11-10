@@ -143,60 +143,6 @@
 	}
 }
 
-.editor-styles-wrapper {
-	.bengal-studio-block-featured-jobs__list {
-		li.job_listing {
-			a {
-				padding: 1em 0;
-			}
-
-			.image {
-				float: left;
-
-				img {
-					left: 0;
-					position: relative;
-				}
-			}
-
-			.content {
-				overflow: hidden;
-			}
-
-			.position {
-				float: none;
-				width: auto;
-				padding: 0;
-			}
-
-			ul.meta {
-				float: none;
-				width: auto;
-				padding: 0;
-				margin: 0;
-				text-align: left;
-
-				li {
-					float: none;
-					display: inline;
-					padding: 0;
-					margin: 0 0.5em 0 0;
-					font-weight: normal;
-
-					&:after {
-						padding: 0 0 0 0.5em;
-						content: "\2023";
-					}
-
-					&:last-child:after {
-						content: '';
-					}
-				}
-			}
-		}
-	}
-}
-
 .job-types,
 .job_listing {
 	.job-type {

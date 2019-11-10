@@ -248,6 +248,7 @@ export default withSelect((select, props) => {
 		order,
 		orderby: orderBy,
 		per_page: jobsToShow,
+		featured: true,
 	}, (value) => !isUndefined(value));
 
 	const featuredJobs = getEntityRecords('postType', 'job_listing', featuredJobsQuery);
