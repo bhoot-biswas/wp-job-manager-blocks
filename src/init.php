@@ -14,6 +14,54 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Renders the `core/latest-posts` block on server.
+ *
+ * @param array $attributes The block attributes.
+ *
+ * @return string Returns the post content with latest posts added.
+ */
+function bengal_studio_render_featured_jobs( $attributes ) {
+	wp_enqueue_style( 'wp-job-manager-job-listings' );
+
+	ob_start();
+
+	$args = [
+		'posts_per_page' => absint( $attributes['jobsToShow'] ),
+		'orderby'        => esc_attr( $attributes['orderBy'] ),
+		'order'          => esc_attr( $attributes['order'] ),
+		'featured'       => true,
+	];
+
+	$jobs = get_job_listings( $args );
+
+	if ( $jobs->have_posts() ) : ?>
+
+		<ul class="job_listings bengal-studio-block-featured-jobs__list">
+
+			<?php
+			while ( $jobs->have_posts() ) :
+				$jobs->the_post();
+				?>
+
+				<?php get_job_manager_template( 'content-widget-job_listing.php', [ 'show_logo' => absint( $attributes['displayCompanyLogo'] ) ] ); ?>
+
+			<?php endwhile; ?>
+
+		</ul>
+
+	<?php else : ?>
+
+		<?php get_job_manager_template_part( 'content-widget', 'no-jobs-found' ); ?>
+
+		<?php
+	endif;
+
+	wp_reset_postdata();
+
+	return ob_get_clean();
+}
+
+/**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
  * @uses {wp-editor} for WP editor styles.
@@ -132,7 +180,7 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 					'default' => 'date',
 				),
 			),
-			'render_callback' => 'render_block_core_latest_jobs',
+			'render_callback' => 'bengal_studio_render_featured_jobs',
 		)
 	);
 }
