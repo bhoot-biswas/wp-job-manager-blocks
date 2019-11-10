@@ -185,3 +185,22 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 	);
 }
 add_action( 'init', 'wp_job_manager_blocks_register_block_featured_jobs' );
+
+/**
+ * [bengal_studio_query_jobs_by_featured description]
+ * @param  [type] $args    [description]
+ * @param  [type] $request [description]
+ * @return [type]          [description]
+ */
+function bengal_studio_query_jobs_by_featured( $args, $request ) {
+	if ( isset( $request['featured'] ) && ! is_null( $request['featured'] ) ) {
+		$args['meta_query'][] = [
+			'key'     => '_featured',
+			'value'   => '1',
+			'compare' => $request['featured'] ? '=' : '!=',
+		];
+	}
+
+	return $args;
+}
+add_filter( 'rest_job_listing_query', 'bengal_studio_query_jobs_by_featured', 10, 2 );
