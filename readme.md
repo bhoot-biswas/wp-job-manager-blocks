@@ -1,25 +1,54 @@
-This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
+# WP Job Manager Blocks #
+**Contributors:** bhoot  
+**Tags:** gutenberg, job manager, job listing, jobs, blocks, job manager blocks  
+**Requires at least:** 5.0  
+**Tested up to:** 5.2  
+**Requires PHP:** 5.6  
+**Stable tag:** 1.0.0  
+**License:** GPLv3  
+**License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
-Below you will find some information on how to run scripts.
+## Description ##
 
->You can find the most recent version of this guide [here](https://github.com/ahmadawais/create-guten-block).
+WP Job Manager Blocks are the easiest, most flexible way to display your job listings on posts and pages!
 
-## 👉  `npm start`
-- Use to compile and run the block in development mode.
-- Watches for any changes and reports back any errors in your code.
+**Featured Jobs Block**
+Display a list of featured listings on your site.
 
-## 👉  `npm run build`
-- Use to build production code for your block inside `dist` folder.
-- Runs once and reports back the gzip file sizes of the produced code.
+**Recent Jobs Block**
+Display a list of recent listings on your site, optionally matching a keyword and location.
 
-## 👉  `npm run eject`
-- Use to eject your plugin out of `create-guten-block`.
-- Provides all the configurations so you can customize the project as you want.
-- It's a one-way street, `eject` and you have to maintain everything yourself.
-- You don't normally have to `eject` a project because by ejecting you lose the connection with `create-guten-block` and from there onwards you have to update and maintain all the dependencies on your own.
+## Getting Started ##
 
----
+### Automatic installation ###
 
-###### Feel free to tweet and say 👋 at me [@MrAhmadAwais](https://twitter.com/mrahmadawais/)
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of this plugin, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-[![npm](https://img.shields.io/npm/v/create-guten-block.svg?style=flat-square)](https://www.npmjs.com/package/create-guten-block) [![npm](https://img.shields.io/npm/dt/create-guten-block.svg?style=flat-square&label=downloads)](https://www.npmjs.com/package/create-guten-block)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ahmadawais/create-guten-block) [![Tweet for help](https://img.shields.io/twitter/follow/mrahmadawais.svg?style=social&label=Tweet%20@MrAhmadAwais)](https://twitter.com/mrahmadawais/) [![GitHub stars](https://img.shields.io/github/stars/ahmadawais/create-guten-block.svg?style=social&label=Stars)](https://github.com/ahmadawais/create-guten-block/stargazers) [![GitHub followers](https://img.shields.io/github/followers/ahmadawais.svg?style=social&label=Follow)](https://github.com/ahmadawais?tab=followers)
+In the search field type “WP Job Manager Blocks” and click Search Plugins. Once you’ve found this plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+
+### Manual installation ###
+
+The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+### Where can I report bugs or contribute to the project? ###
+
+Bugs should be reported in the [WP Job Manager Blocks GitHub repository](https://github.com/bhoot-biswas/wp-job-manager-blocks/).
+
+### This is awesome! Can I contribute? ###
+
+Yes you can! Join in on our [GitHub repository](https://github.com/bhoot-biswas/wp-job-manager-blocks/) :)
+
+## Screenshots ##
+
+### 1. The Featured Jobs Block ###
+![The Featured Jobs Block](http://ps.w.org/wp-job-manager-blocks/assets/screenshot-1.png)
+
+### 2. The Recent Jobs Block ###
+![The Recent Jobs Block](http://ps.w.org/wp-job-manager-blocks/assets/screenshot-2.png)
+
+
+## Changelog ##
+
+### 1.0.0 ###
+
+* First stable release.

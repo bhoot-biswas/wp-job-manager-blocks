@@ -1,11 +1,11 @@
-module.exports = function( grunt ) {
+module.exports = function(grunt) {
 
 	'use strict';
 
 	// Project configuration
-	grunt.initConfig( {
+	grunt.initConfig({
 
-		pkg: grunt.file.readJSON( 'package.json' ),
+		pkg: grunt.file.readJSON('package.json'),
 
 		addtextdomain: {
 			options: {
@@ -15,7 +15,7 @@ module.exports = function( grunt ) {
 				options: {
 					updateDomains: true
 				},
-				src: [ '*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*' ]
+				src: ['*.php', '**/*.php', '!\.git/**/*', '!bin/**/*', '!node_modules/**/*', '!tests/**/*']
 			}
 		},
 
@@ -31,7 +31,7 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
+					exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*'],
 					mainFile: 'sample-plugin.php',
 					potFilename: 'sample-plugin.pot',
 					potHeaders: {
@@ -43,13 +43,13 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-	} );
+	});
 
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.registerTask( 'default', [ 'i18n','readme' ] );
-	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
-	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.loadNpmTasks('grunt-wp-i18n');
+	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
+	grunt.registerTask('default', ['i18n', 'readme']);
+	grunt.registerTask('i18n', ['addtextdomain', 'makepot']);
+	grunt.registerTask('readme', ['wp_readme_to_markdown']);
 
 	grunt.util.linefeed = '\n';
 

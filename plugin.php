@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WP Job Manager - Blocks
+ * Plugin Name: WP Job Manager Blocks
  * Plugin URI: https://bengal-studio.com/plugins/wp-job-manager-blocks/
  * Description: Gutenberg Blocks for WP Job Manager.
  * Author: Bengal Studio

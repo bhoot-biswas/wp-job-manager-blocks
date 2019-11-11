@@ -112,7 +112,7 @@ function bengal_studio_render_featured_jobs( $attributes ) {
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function wp_job_manager_blocks_block_assets() {
+function bengal_studio_wpjm_blocks_block_assets() {
 	// Styles.
 	wp_enqueue_style(
 		'wp_job_manager_blocks-style-css', // Handle.
@@ -120,10 +120,10 @@ function wp_job_manager_blocks_block_assets() {
 		array( 'wp-editor' ), // Dependency to include the CSS after it.
 		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
 	);
-} // End function wp_job_manager_blocks_block_assets().
+} // End function bengal_studio_wpjm_blocks_block_assets().
 
 // Hook: Frontend assets.
-add_action( 'enqueue_block_assets', 'wp_job_manager_blocks_block_assets' );
+add_action( 'enqueue_block_assets', 'bengal_studio_wpjm_blocks_block_assets' );
 
 /**
  * Enqueue Gutenberg block assets for backend editor.
@@ -134,7 +134,7 @@ add_action( 'enqueue_block_assets', 'wp_job_manager_blocks_block_assets' );
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function wp_job_manager_blocks_editor_assets() {
+function bengal_studio_wpjm_blocks_editor_assets() {
 	// Scripts.
 	wp_enqueue_script(
 		'wp_job_manager_blocks-block-js', // Handle.
@@ -149,15 +149,15 @@ function wp_job_manager_blocks_editor_assets() {
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
-} // End function wp_job_manager_blocks_editor_assets().
+} // End function bengal_studio_wpjm_blocks_editor_assets().
 
 // Hook: Editor assets.
-add_action( 'enqueue_block_editor_assets', 'wp_job_manager_blocks_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'bengal_studio_wpjm_blocks_editor_assets' );
 
 /**
  * Registers the `bengal-studio/featured-jobs` block on server.
  */
-function wp_job_manager_blocks_register_block_featured_jobs() {
+function bengal_studio_wpjm_blocks_register_block_featured_jobs() {
 	register_block_type(
 		'bengal-studio/featured-jobs',
 		array(
@@ -229,7 +229,7 @@ function wp_job_manager_blocks_register_block_featured_jobs() {
 		)
 	);
 }
-add_action( 'init', 'wp_job_manager_blocks_register_block_featured_jobs' );
+add_action( 'init', 'bengal_studio_wpjm_blocks_register_block_featured_jobs' );
 
 /**
  * [bengal_studio_query_jobs_by_featured description]
