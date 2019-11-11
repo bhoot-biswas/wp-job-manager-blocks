@@ -32,11 +32,21 @@ function bengal_studio_render_featured_jobs( $attributes ) {
 		'featured'       => true,
 	];
 
+	$class = 'job_listings bengal-studio-block-featured-jobs__list';
+
+	if ( isset( $attributes['align'] ) ) {
+		$class .= ' align' . $attributes['align'];
+	}
+
+	if ( isset( $attributes['className'] ) ) {
+		$class .= ' ' . $attributes['className'];
+	}
+
 	$jobs = get_job_listings( $args );
 
 	if ( $jobs->have_posts() ) : ?>
 
-		<ul class="job_listings bengal-studio-block-featured-jobs__list">
+		<ul class="<?php echo esc_attr( $class ); ?>">
 
 			<?php
 			while ( $jobs->have_posts() ) :

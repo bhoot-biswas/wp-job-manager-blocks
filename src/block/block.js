@@ -14,8 +14,12 @@ import edit from './edit';
 import './editor.scss';
 import './style.scss';
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const {
+	__
+} = wp.i18n; // Import __() from wp.i18n
+const {
+	registerBlockType
+} = wp.blocks; // Import registerBlockType() from wp.blocks
 
 /**
  * Register: aa Gutenberg Block.
@@ -30,57 +34,31 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'bengal-studio/featured-jobs', {
+registerBlockType('bengal-studio/featured-jobs', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'wp-job-manager-blocks - CGB Block' ), // Block title.
+	title: __('Featured Jobs'), // Block title.
 	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'wp-job-manager-blocks — CGB Block' ),
-		__( 'CGB Example' ),
-		__( 'create-guten-block' ),
+		__('wp-job-manager-blocks — CGB Block'),
+		__('CGB Example'),
+		__('create-guten-block'),
 	],
 
-    /**
-     * The edit function describes the structure of your block in the context of the editor.
-     * This represents what the editor will render when the block is used.
-     *
-     * The "edit" property must be a valid function.
-     *
-     * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-     *
-     * @param {Object} props Props.
-     * @returns {Mixed} JSX Component.
-     */
-	edit,
+	supports: {
+		align: ['wide', 'full'],
+	},
 
 	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
+	 * The edit function describes the structure of your block in the context of the editor.
+	 * This represents what the editor will render when the block is used.
 	 *
-	 * The "save" property must be specified and must be a valid function.
+	 * The "edit" property must be a valid function.
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 *
 	 * @param {Object} props Props.
-	 * @returns {Mixed} JSX Frontend HTML.
+	 * @returns {Mixed} JSX Component.
 	 */
-	save: ( props ) => {
-		return (
-			<div className={ props.className }>
-				<p>— Hello from the frontend.</p>
-				<p>
-					CGB BLOCK: <code>wp-job-manager-blocks</code> is a new Gutenberg block.
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
-		);
-	},
-} );
+	edit,
+});
