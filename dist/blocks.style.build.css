@@ -52,3 +52,14 @@
     .editor-styles-wrapper .bengal-studio-block-featured-jobs__list li.job_listing ul.meta li:last-child:after,
     .entry-content .bengal-studio-block-featured-jobs__list li.job_listing ul.meta li:last-child:after {
       content: ''; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */

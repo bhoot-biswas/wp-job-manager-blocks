@@ -1,0 +1,13 @@
+{
+	"name": "bengal-studio/wp-job-manager-blocks",
+	"authors": [{
+		"name": "Mithun Biswas",
+		"email": "bhoot.biswas@gmail.com"
+	}],
+	"require": {},
+    "autoload": {
+		"psr-4": {
+			"BengalStudio\\WPJM\\Blocks\\": "src/"
+		}
+	}
+}

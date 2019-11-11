@@ -183,3 +183,15 @@
 .bengal-studio-block-featured-jobs__list li.job_listing,
 .bengal-studio-block-featured-jobs__list li.no_job_listings_found {
   padding: 0 !important; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
