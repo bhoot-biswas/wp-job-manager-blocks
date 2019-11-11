@@ -121,6 +121,8 @@ class Plugin {
 	 * Load classes.
 	 */
 	public function run() {
+		// Blocks.
+		new Blocks();
 	}
 
 	/**
