@@ -26,9 +26,9 @@ function bengal_studio_render_featured_jobs( $attributes ) {
 	ob_start();
 
 	$args = [
-		'posts_per_page' => absint( $attributes['jobsToShow'] ),
-		'orderby'        => esc_attr( $attributes['orderBy'] ),
-		'order'          => esc_attr( $attributes['order'] ),
+		'posts_per_page' => $attributes['jobsToShow'],
+		'orderby'        => $attributes['orderBy'],
+		'order'          => $attributes['order'],
 		'featured'       => true,
 	];
 
@@ -43,7 +43,42 @@ function bengal_studio_render_featured_jobs( $attributes ) {
 				$jobs->the_post();
 				?>
 
-				<?php get_job_manager_template( 'content-widget-job_listing.php', [ 'show_logo' => absint( $attributes['displayCompanyLogo'] ) ] ); ?>
+				<li <?php job_listing_class(); ?>>
+					<a href="<?php the_job_permalink(); ?>">
+						<?php if ( isset( $attributes['displayCompanyLogo'] ) && $attributes['displayCompanyLogo'] ) : ?>
+							<div class="image">
+								<?php the_company_logo(); ?>
+							</div>
+						<?php endif; ?>
+						<div class="content">
+							<div class="position">
+								<h3><?php wpjm_the_job_title(); ?></h3>
+							</div>
+							<ul class="meta">
+								<?php if ( isset( $attributes['displayLocation'] ) && $attributes['displayLocation'] ) : ?>
+									<li class="location"><?php the_job_location( false ); ?></li>
+								<?php endif; ?>
+								<?php if ( isset( $attributes['displayCompanyName'] ) && $attributes['displayCompanyName'] ) : ?>
+									<li class="company"><?php the_company_name(); ?></li>
+								<?php endif; ?>
+								<?php if ( isset( $attributes['displayType'] ) && $attributes['displayType'] ) : ?>
+									<?php
+									if ( get_option( 'job_manager_enable_types' ) ) :
+										$types = wpjm_get_the_job_types();
+										if ( ! empty( $types ) ) :
+											foreach ( $types as $type ) :
+												?>
+												<li class="job-type <?php echo esc_attr( sanitize_title( $type->slug ) ); ?>"><?php echo esc_html( $type->name ); ?></li>
+												<?php
+											endforeach;
+										endif;
+									endif;
+									?>
+								<?php endif; ?>
+							</ul>
+						</div>
+					</a>
+				</li>
 
 			<?php endwhile; ?>
 
