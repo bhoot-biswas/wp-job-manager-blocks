@@ -19,11 +19,8 @@ import {
 	PanelBody,
 	Placeholder,
 	QueryControls,
-	RangeControl,
 	Spinner,
 	ToggleControl,
-	Toolbar,
-	RadioControl,
 } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import {
@@ -33,13 +30,10 @@ import {
 	__
 } from '@wordpress/i18n';
 import {
-	dateI18n,
-	format,
 	__experimentalGetSettings
 } from '@wordpress/date';
 import {
 	InspectorControls,
-	BlockControls,
 } from '@wordpress/block-editor';
 import {
 	withSelect
@@ -86,7 +80,7 @@ class FeaturedJobsEdit extends Component {
     render() {
 		const { attributes, setAttributes, featuredJobs, media } = this.props;
 		const { typesList } = this.state;
-		const { displayPostContentRadio, displayPostContent, displayJobDate, displayCompanyName, displayCompanyLogo, displayLocation, displayType, postLayout, columns, order, orderBy, types, jobsToShow, excerptLength } = attributes;
+		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, order, orderBy, types, jobsToShow } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -150,15 +144,12 @@ class FeaturedJobsEdit extends Component {
 			featuredJobs.slice( 0, jobsToShow ) :
 			featuredJobs;
 
-		const dateFormat = __experimentalGetSettings().formats.date;
-
         return (
 			<Fragment>
 				{ inspectorControls }
 				<ul
 					className={ classnames( this.props.className, {
 						'bengal-studio-block-featured-jobs__list': true,
-						'has-dates': displayJobDate,
 					} ) }
 				>
 					{ displayJobs.map( ( job, i ) => {
@@ -211,14 +202,6 @@ class FeaturedJobsEdit extends Component {
 													</li>
 												);
 											} ) }
-
-											{ displayJobDate && job.date_gmt &&
-												<li className="date">
-													<time dateTime={ format( 'c', job.date_gmt ) } className="wp-block-latest-posts__post-date">
-														{ dateI18n( dateFormat, job.date_gmt ) }
-													</time>
-												</li>
-											}
 										</ul>
 									</div>
 								</a>
