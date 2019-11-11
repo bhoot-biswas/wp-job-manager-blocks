@@ -123,6 +123,7 @@ class Plugin {
 	public function run() {
 		new Loader();
 		new Blocks();
+		new API\Init();
 	}
 
 	/**
