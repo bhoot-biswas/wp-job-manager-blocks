@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use BengalStudio\WPJM\Blocks;
+
 /**
  * Autoload packages.
  *
@@ -62,7 +64,4 @@ if ( is_readable( $autoloader ) ) {
 	return;
 }
 
-/**
- * Block Initializer.
- */
-require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
+Plugin::instance()->init();
