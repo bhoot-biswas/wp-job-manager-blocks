@@ -38,11 +38,6 @@ Bugs should be reported in the [WP Job Manager Blocks GitHub repository](https:/
 
 Yes you can! Join in on our [GitHub repository](https://github.com/bhoot-biswas/wp-job-manager-blocks/) :)
 
-== Screenshots ==
-
-1. The Featured Jobs Block
-2. The Recent Jobs Block
-
 == Changelog ==
 
 = 1.0.0 =
