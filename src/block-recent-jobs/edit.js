@@ -20,6 +20,7 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
+	RangeControl,
 } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 import {
@@ -44,6 +45,8 @@ import {
 const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
+const DEFAULT_MIN_ITEMS = 1;
+const DEFAULT_MAX_ITEMS = 100;
 
 class RecentJobsEdit extends Component {
 	constructor() {
@@ -77,6 +80,8 @@ class RecentJobsEdit extends Component {
 	}
 
     render() {
+		const maxItems = DEFAULT_MAX_ITEMS;
+		const minItems = DEFAULT_MIN_ITEMS;
 		const { attributes, setAttributes, recentJobs, media } = this.props;
 		const { typesList } = this.state;
 		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, jobsToShow } = attributes;
@@ -106,6 +111,15 @@ class RecentJobsEdit extends Component {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Filtering' ) }>
+					<RangeControl
+						key="query-controls-range-control"
+						label={ __( 'Number of listings to show' ) }
+						value={ jobsToShow }
+						onChange={ ( value ) => setAttributes( { jobsToShow: value } ) }
+						min={ minItems }
+						max={ maxItems }
+						required
+					/>
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -206,15 +220,17 @@ class RecentJobsEdit extends Component {
 
 export default withSelect((select, props) => {
 	const {
+		keyword,
+		location,
 		jobsToShow,
-		types
 	} = props.attributes;
 	const {
 		getEntityRecords
 	} = select('core');
 
 	const recentJobsQuery = pickBy({
-		'job-types': types,
+		keyword,
+		location,
 		per_page: jobsToShow,
 	}, (value) => !isUndefined(value));
 
