@@ -115,12 +115,12 @@ class RecentJobsEdit extends Component {
 					<TextControl
 				        label="Keyword"
 				        value={ keyword }
-				        onChange={ ( value ) => setState( { keyword: value } ) }
+				        onChange={ ( value ) => setAttributes( { keyword: value } ) }
 				    />
 					<TextControl
 				        label="Location"
 				        value={ location }
-				        onChange={ ( value ) => setState( { location: value } ) }
+				        onChange={ ( value ) => setAttributes( { location: value } ) }
 				    />
 					<RangeControl
 						key="query-controls-range-control"
