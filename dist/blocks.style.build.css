@@ -63,3 +63,46 @@
  *
  * CSS for both Frontend+Backend.
  */
+.editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing a,
+.entry-content .bengal-studio-block-recent-jobs__list li.job_listing a {
+  padding: 1em 0; }
+
+.editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing .image,
+.entry-content .bengal-studio-block-recent-jobs__list li.job_listing .image {
+  float: left; }
+  .editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing .image img,
+  .entry-content .bengal-studio-block-recent-jobs__list li.job_listing .image img {
+    left: 0;
+    position: relative; }
+
+.editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing .content,
+.entry-content .bengal-studio-block-recent-jobs__list li.job_listing .content {
+  overflow: hidden; }
+
+.editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing .position,
+.entry-content .bengal-studio-block-recent-jobs__list li.job_listing .position {
+  float: none;
+  width: auto;
+  padding: 0; }
+
+.editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing ul.meta,
+.entry-content .bengal-studio-block-recent-jobs__list li.job_listing ul.meta {
+  float: none;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  text-align: left; }
+  .editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li,
+  .entry-content .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li {
+    float: none;
+    display: inline;
+    padding: 0;
+    margin: 0 0.5em 0 0;
+    font-weight: normal; }
+    .editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li:after,
+    .entry-content .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li:after {
+      padding: 0 0 0 0.5em;
+      content: "\2023"; }
+    .editor-styles-wrapper .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li:last-child:after,
+    .entry-content .bengal-studio-block-recent-jobs__list li.job_listing ul.meta li:last-child:after {
+      content: ''; }
