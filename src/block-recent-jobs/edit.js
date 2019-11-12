@@ -20,6 +20,7 @@ import {
 	Placeholder,
 	Spinner,
 	ToggleControl,
+	TextControl,
 	RangeControl,
 } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
@@ -84,7 +85,7 @@ class RecentJobsEdit extends Component {
 		const minItems = DEFAULT_MIN_ITEMS;
 		const { attributes, setAttributes, recentJobs, media } = this.props;
 		const { typesList } = this.state;
-		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, jobsToShow } = attributes;
+		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, keyword, location, jobsToShow } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -111,6 +112,16 @@ class RecentJobsEdit extends Component {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Filtering' ) }>
+					<TextControl
+				        label="Keyword"
+				        value={ keyword }
+				        onChange={ ( value ) => setState( { keyword: value } ) }
+				    />
+					<TextControl
+				        label="Location"
+				        value={ location }
+				        onChange={ ( value ) => setState( { location: value } ) }
+				    />
 					<RangeControl
 						key="query-controls-range-control"
 						label={ __( 'Number of listings to show' ) }
