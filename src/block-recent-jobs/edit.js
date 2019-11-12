@@ -18,7 +18,6 @@ import {
 import {
 	PanelBody,
 	Placeholder,
-	QueryControls,
 	Spinner,
 	ToggleControl,
 } from '@wordpress/components';
@@ -78,9 +77,9 @@ class RecentJobsEdit extends Component {
 	}
 
     render() {
-		const { attributes, setAttributes, featuredJobs, media } = this.props;
+		const { attributes, setAttributes, recentJobs, media } = this.props;
 		const { typesList } = this.state;
-		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, order, orderBy, types, jobsToShow } = attributes;
+		const { displayCompanyName, displayCompanyLogo, displayLocation, displayType, jobsToShow } = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -106,22 +105,12 @@ class RecentJobsEdit extends Component {
 						onChange={ ( value ) => setAttributes( { displayType: value } ) }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Sorting and Filtering' ) }>
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ jobsToShow }
-						categoriesList={ typesList }
-						selectedCategoryId={ types }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { types: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { jobsToShow: value } ) }
-					/>
+				<PanelBody title={ __( 'Filtering' ) }>
 				</PanelBody>
 			</InspectorControls>
 		);
 
-		const hasJobs = Array.isArray( featuredJobs ) && featuredJobs.length;
+		const hasJobs = Array.isArray( recentJobs ) && recentJobs.length;
 		if ( ! hasJobs ) {
 			return (
 				<Fragment>
@@ -130,7 +119,7 @@ class RecentJobsEdit extends Component {
 						icon="admin-post"
 						label={ __( 'Featured Jobs' ) }
 					>
-						{ ! Array.isArray( featuredJobs ) ?
+						{ ! Array.isArray( recentJobs ) ?
 							<Spinner /> :
 							__( 'No jobs found.' )
 						}
@@ -140,16 +129,16 @@ class RecentJobsEdit extends Component {
 		}
 
 		// Removing jobs from display should be instant.
-		const displayJobs = featuredJobs.length > jobsToShow ?
-			featuredJobs.slice( 0, jobsToShow ) :
-			featuredJobs;
+		const displayJobs = recentJobs.length > jobsToShow ?
+			recentJobs.slice( 0, jobsToShow ) :
+			recentJobs;
 
         return (
 			<Fragment>
 				{ inspectorControls }
 				<ul
 					className={ classnames( this.props.className, {
-						'bengal-studio-block-featured-jobs__list': true,
+						'bengal-studio-block-recent-jobs__list': true,
 					} ) }
 				>
 					{ displayJobs.map( ( job, i ) => {
@@ -218,27 +207,22 @@ class RecentJobsEdit extends Component {
 export default withSelect((select, props) => {
 	const {
 		jobsToShow,
-		order,
-		orderBy,
 		types
 	} = props.attributes;
 	const {
 		getEntityRecords
 	} = select('core');
 
-	const featuredJobsQuery = pickBy({
+	const recentJobsQuery = pickBy({
 		'job-types': types,
-		order,
-		orderby: orderBy,
 		per_page: jobsToShow,
-		featured: true,
 	}, (value) => !isUndefined(value));
 
-	const featuredJobs = getEntityRecords('postType', 'job_listing', featuredJobsQuery);
+	const recentJobs = getEntityRecords('postType', 'job_listing', recentJobsQuery);
 
 	let media = [];
-	if(Array.isArray( featuredJobs ) && featuredJobs.length) {
-		const mediaIds = featuredJobs.map( job => {
+	if(Array.isArray( recentJobs ) && recentJobs.length) {
+		const mediaIds = recentJobs.map( job => {
 			return job.featured_media;
 		});
 		const mediaQuery = {
@@ -250,6 +234,6 @@ export default withSelect((select, props) => {
 
 	return {
 		media,
-		featuredJobs,
+		recentJobs,
 	};
 })(RecentJobsEdit);
