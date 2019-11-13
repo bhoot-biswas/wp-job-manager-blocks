@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'sample-plugin',
+				textdomain: 'blocks-for-wp-job-manager',
 			},
 			update_all_domains: {
 				options: {
@@ -32,8 +32,8 @@ module.exports = function(grunt) {
 				options: {
 					domainPath: '/languages',
 					exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*'],
-					mainFile: 'sample-plugin.php',
-					potFilename: 'sample-plugin.pot',
+					mainFile: 'blocks-for-wp-job-manager.php',
+					potFilename: 'blocks-for-wp-job-manager.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true
