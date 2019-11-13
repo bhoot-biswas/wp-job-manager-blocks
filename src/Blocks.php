@@ -224,7 +224,9 @@ class Blocks {
 		ob_start();
 
 		$args = [
-			'posts_per_page' => $attributes['jobsToShow'],
+			'search_location' => $attributes['location'],
+			'search_keywords' => $attributes['keyword'],
+			'posts_per_page'  => $attributes['jobsToShow'],
 		];
 
 		$class = 'job_listings bengal-studio-block-recent-jobs__list';

@@ -82,7 +82,7 @@ class Plugin {
 	public function on_activation() {}
 
 	/**
-	 * Remove WP Job Manager Blocks scheduled actions on deactivate.
+	 * Remove Blocks for WP Job Manager scheduled actions on deactivate.
 	 *
 	 * @return void
 	 */
@@ -114,7 +114,7 @@ class Plugin {
 	 * Load Localisation files.
 	 */
 	protected function load_plugin_textdomain() {
-		load_plugin_textdomain( 'wp-job-manager-blocks', false, basename( dirname( __DIR__ ) ) . '/languages' );
+		load_plugin_textdomain( 'blocks-for-wp-job-manager', false, basename( dirname( __DIR__ ) ) . '/languages' );
 	}
 
 	/**
@@ -169,13 +169,13 @@ class Plugin {
 		if ( $has_valid_wp_version ) {
 			$message = sprintf(
 				/* translators: URL of WP Job Manager plugin */
-				__( 'The WP Job Manager Blocks plugin requires <a href="%s">WP Job Manager</a> 1.30.0 or greater to be installed and active.', 'wp-job-manager-blocks' ),
+				__( 'The Blocks for WP Job Manager plugin requires <a href="%s">WP Job Manager</a> 1.30.0 or greater to be installed and active.', 'blocks-for-wp-job-manager' ),
 				'https://wordpress.org/plugins/wp-job-manager/'
 			);
 		} else {
 			$message = sprintf(
 				/* translators: 1: URL of WordPress.org, 2: URL of WP Job Manager plugin */
-				__( 'The WP Job Manager Blocks plugin requires both <a href="%1$s">WordPress</a> 5.2 or greater and <a href="%2$s">WP Job Manager</a> 1.30.0 or greater to be installed and active.', 'wp-job-manager-blocks' ),
+				__( 'The Blocks for WP Job Manager plugin requires both <a href="%1$s">WordPress</a> 5.2 or greater and <a href="%2$s">WP Job Manager</a> 1.30.0 or greater to be installed and active.', 'blocks-for-wp-job-manager' ),
 				'https://wordpress.org/',
 				'https://wordpress.org/plugins/wp-job-manager/'
 			);
@@ -187,10 +187,10 @@ class Plugin {
 	 * Notify users that the plugin needs to be built.
 	 */
 	public function render_build_notice() {
-		$message_one = __( 'You have installed a development version of WP Job Manager Blocks which requires files to be built. From the plugin directory, run <code>npm install</code> to install dependencies, <code>npm run build</code> to build the files.', 'wp-job-manager-blocks' );
+		$message_one = __( 'You have installed a development version of Blocks for WP Job Manager which requires files to be built. From the plugin directory, run <code>npm install</code> to install dependencies, <code>npm run build</code> to build the files.', 'blocks-for-wp-job-manager' );
 		$message_two = sprintf(
 			/* translators: 1: URL of GitHub Repository build page */
-			__( 'Or you can download a pre-built version of the plugin by visiting <a href="%1$s">the releases page in the repository</a>.', 'wp-job-manager-blocks' ),
+			__( 'Or you can download a pre-built version of the plugin by visiting <a href="%1$s">the releases page in the repository</a>.', 'blocks-for-wp-job-manager' ),
 			'https://github.com/bhoot-biswas/wp-job-manager-blocks/releases'
 		);
 		printf( '<div class="error"><p>%s %s</p></div>', $message_one, $message_two ); /* WPCS: xss ok. */

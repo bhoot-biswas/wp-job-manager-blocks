@@ -1,6 +1,6 @@
 <?php
 /**
- * Register the scripts, styles, and includes needed for pieces of the WP Job Manager Blocks experience.
+ * Register the scripts, styles, and includes needed for pieces of the Blocks for WP Job Manager experience.
  *
  * @package BengalStudio\WPJM\Blocks
  */

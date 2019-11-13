@@ -1,4 +1,4 @@
-# WP Job Manager Blocks #
+# Blocks for WP Job Manager #
 **Contributors:** bhoot  
 **Tags:** gutenberg, job manager, job listing, jobs, blocks, job manager blocks  
 **Requires at least:** 5.0  
@@ -10,7 +10,7 @@
 
 ## Description ##
 
-WP Job Manager Blocks are the easiest, most flexible way to display your job listings on posts and pages!
+Blocks for WP Job Manager are the easiest, most flexible way to display your job listings on posts and pages!
 
 **Featured Jobs Block**
 Display a list of featured listings on your site.
@@ -24,7 +24,7 @@ Display a list of recent listings on your site, optionally matching a keyword an
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of this plugin, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-In the search field type “WP Job Manager Blocks” and click Search Plugins. Once you’ve found this plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+In the search field type “Blocks for WP Job Manager” and click Search Plugins. Once you’ve found this plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
 ### Manual installation ###
 
@@ -32,7 +32,7 @@ The manual installation method involves downloading the plugin and uploading it 
 
 ### Where can I report bugs or contribute to the project? ###
 
-Bugs should be reported in the [WP Job Manager Blocks GitHub repository](https://github.com/bhoot-biswas/wp-job-manager-blocks/).
+Bugs should be reported in the [Blocks for WP Job Manager GitHub repository](https://github.com/bhoot-biswas/wp-job-manager-blocks/).
 
 ### This is awesome! Can I contribute? ###
 
